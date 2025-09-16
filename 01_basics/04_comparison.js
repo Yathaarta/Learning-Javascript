@@ -10,8 +10,8 @@
 
 //working example
 
-console.log(2 == "2")
-console.log(2 > "01")  
+console.log(2 == "2")    //true
+console.log(2 > "01")    //true
 
 //unpredicatable examples
 
@@ -25,3 +25,9 @@ console.log(undefined == 0)  //false
 console.log(undefined > 0)   //false
 console.log(undefined < 0)   //false
 console.log(undefined >= 0)  //false  why not same as null?  hence unpredicatable
+
+
+// Strict check '==='
+//compare the objects as they are without type conversions
+
+console.log("02" === 2) //false
