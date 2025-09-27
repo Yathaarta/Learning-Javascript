@@ -1,0 +1,43 @@
+body {
+    background-color: #212121;
+    color: rgb(255, 246, 235);
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+    /* text-size-adjust: 80%; */
+}
+span {
+    display: block;
+}
+.canvas {
+    margin: 100px auto 100px auto;
+    text-align: center;
+    width: 80%;
+}
+
+.button {
+    width: 100px;
+    height: 100px;
+    border: solid black 2px;
+    display: inline-block;
+}
+
+#blue {
+    background-color: blue;
+}
+
+#orange {
+    background-color: orange;
+}
+#green {
+    background-color: green;
+}
+#yellow {
+    background-color: yellow;
+}
+
+a {
+    color: rgb(151, 8, 8)
+}
+
+a:hover {
+    color: darkblue
+}
