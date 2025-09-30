@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Yatharth Pandey</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    // settimeout and setinterval are not javasrcipt functions they are web apis provided by browser
+
+
+
+    // timeout - executes the function given as parameter after a set time
+    const error = function () {
+        const ul = document.createElement('ul');
+        document.querySelector('body').appendChild(ul)
+    }
+    setTimeout(error, 10000);   //after 10000ms i.e 10sec // can also define function in here reference given
+
+    // setinterval - executes the function every set interval of time, also can use a third parameter - see internet
+    const errorStatement = function (statement) {
+        const ul = document.querySelector('ul');
+        const li = document.createElement('li');
+        li.textContent = statement;
+        ul.appendChild(li)
+    };
+    // this will raise 19 error cause after 19 interval of 500ms at 20th interval 10sec passes and error function runs and ul is created
+    // and then li is able to be appended as child of ul
+    const intervalRef = setInterval(errorStatement, 500, 'ERROR: Yatharth Pandey says Shoiee');  // <= given third para pass as statement in function 
+
+    // clear tiumeout&interval used to clear a setinterval we have to give reference of setInterval into parameter we can
+    // also use a eventlistener, when event performed stop the intervally running function
+    document.querySelector('#stop').addEventListener('click' , function() {
+        clearInterval(intervalRef);
+    });
+
+
+    //what happening overall is after timeoutof 10sec we execute error function which creates a ul element then we use interval of every 5s to make a li element which display errorstatement again and again
+
+</script>
+</html>
