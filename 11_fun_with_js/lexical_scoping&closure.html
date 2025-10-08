@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mozilla</title>
+</head>
+<body style="background-color: #313131; color:white;">
+    <h1>HelloJi</h1>
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+    <button id="indigo">Indigo</button>
+    <button id="white">White</button>
+
+</body>
+
+<script>
+    function outer() {
+        let usernmae = "uttam";
+        function inner(){
+            let secret = "my123"
+            console.log("inner", usernmae);         // inner function can access outer function variable this is called lexical scoping
+        }
+        function innertwo(){
+            console.log("innerTwo", usernmae);
+            console.log(secret);
+        }
+        inner()
+        innertwo()
+        console.log("outer", usernmae);     // outer function can not access inner function variable
+    }
+    outer();
+
+
+    function makeFunc() {
+        let name = "Mozilla";
+        function displayName() {
+            console.log(name);   
+        }
+        return displayName;
+    }
+
+    const myFunc = makeFunc();             // myFunc is now a closure that includes the displayName function and the lexical environment in which it was created
+    myFunc();                           
+
+    // a function's scope is present till the function is alive
+    // a function is alive till there is a reference to it
+    // after returned from makeFunc, displayName is still alive because myFunc references it
+    // but display name and makeFunc are sharing memory space for name variable
+    // hence lexical evironment is preserved for displayName function, this is called closure
+</script>
+
+<script>
+    // document.getElementById("green").onclick = function(){
+    //     document.body.style.backgroundColor = "green"
+    // }
+    // we have 4 color's now but if we had 50 can we write similar function 50 times? So, lets make a clickHandler function that uses closure and lexical scoping, etc.
+
+    function clickHandler(color){
+        //document.body.style.backgroundColor = `${color}`        
+        return function(){                               // 1 contd: we can return a function from clickHandler that sets the background color
+            document.body.style.backgroundColor = `${color}`        
+        }
+    }
+    
+    document.getElementById('orange').onclick = clickHandler('orange');  
+    document.getElementById('green').onclick = clickHandler('green');
+    document.getElementById('indigo').onclick = clickHandler('indigo');
+    document.getElementById('white').onclick = clickHandler('white');  
+    // 1: wont work as expected because .onclick expects a function but we are giving it the result/reference of clickHandler function which is undefined, therefore the latest called function with parameter 'green' is set as bgcolor and button do nothing on click
+
+</script>
+</html>
